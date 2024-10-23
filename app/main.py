@@ -1,6 +1,9 @@
 from fastapi import FastAPI   # type: ignore
+from .database import engine
+from . import models
 from .lms_routers import users, sections, courses
 
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 

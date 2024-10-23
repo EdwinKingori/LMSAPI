@@ -7,6 +7,12 @@ class User(BaseModel):
     id: int
     name: str
     email: EmailStr
+
+
+class UserOut(BaseModel):
+    id: int
+    email: EmailStr
     created_at: datetime
-    is_active: bool
-    bio: Optional[str]
+
+    class config:
+        orm_mode = True
