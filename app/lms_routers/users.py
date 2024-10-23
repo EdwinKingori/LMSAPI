@@ -10,7 +10,7 @@ router = APIRouter(
 
 @router.get("/", response_model=List[schemas.User])
 async def get_users():
-    return users
+    pass
 
 
 @router.post("/")
@@ -21,4 +21,4 @@ async def create_user(user: schemas.User):
 
 @router.get("/users/{id}")
 async def get_user(id: int):
-    return users
+    pass
