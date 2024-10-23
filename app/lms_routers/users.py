@@ -10,9 +10,9 @@ router = APIRouter(
 )
 
 
-@router.get("/", response_model=List[schemas.User])
+@router.get("/", response_model=List[schemas.UserOut])
 def get_users(db: Session = Depends(get_db)):
-    users = db.query(models.User).filter(models.User).all()
+    users = db.query(models.User).all()
     return users
 
 
@@ -27,12 +27,12 @@ def create_user(user: schemas.User,  db: Session = Depends(get_db)):
     return new_user
 
 
-@router.get("/users/{id}", response_model=schemas.UserOut)
+@router.get("/{id}", response_model=schemas.UserOut)
 def get_user(id: int, db: Session = Depends(get_db)):
     user = db.query(models.User).filter(
-        models.User.id == models.User.id).first()
+        models.User.id == id).first()
 
     if not user:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                            detail=(f"user with {id} not found!"))
+                            detail=(f"user number {id} not found!"))
     return user

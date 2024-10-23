@@ -4,13 +4,13 @@ from typing import Optional, List
 
 
 class User(BaseModel):
-    id: int
     name: str
     email: EmailStr
 
 
 class UserOut(BaseModel):
     id: int
+    name: str
     email: EmailStr
     created_at: datetime
 
