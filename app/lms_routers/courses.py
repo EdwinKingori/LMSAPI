@@ -4,7 +4,7 @@ from .. import schemas
 
 
 router = APIRouter(
-    prefix="/users",
+    prefix="/courses",
     tags=['Courses']
 )
 
